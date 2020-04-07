@@ -12,6 +12,8 @@ Sort / Organise Collections or Porn from a cluttered mess into designated folder
 ```                                                                                     
 
 ### Description
+Inspired by the bash script [Filthmover](https://github.com/filthmover/filthmover), I tried to make some of the features more portable for any system (e.g. Windows). I hope to integrate a folder picture grabber feature that can label folders.
+
 Clean up a messy folder with many downloaded but otherwise well named files into more managable folders. This can be based on an input driver file which is just a 2 column csv file. An example list is provided, which has the topic of adult film sites. Order does not matter. Although it is a manual process to create a list, this ensures that we can sort on specifics we want and apply consistency over many cleanup jobs. Some modes do not require the use of an input file, but makes sorting less powerful.
 
 Currently there are 6 modes:
