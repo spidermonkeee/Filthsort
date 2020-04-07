@@ -10,7 +10,7 @@ Sort / Organise Collections or Porn from a cluttered mess into designated folder
 | $$      | $$| $$  |  $$$$/| $$  | $$|  $$$$$$/|  $$$$$$/| $$        |  $$$$/
 |__/      |__/|__/   \___/  |__/  |__/ \______/  \______/ |__/         \___/    
 ```                                                                                     
-
+![Python application](https://github.com/spidermonkeee/Filthsort/workflows/Python%20application/badge.svg)
 ### Description
 Inspired by the bash script [Filthmover](https://github.com/filthmover/filthmover), I tried to make some of the features more portable for any system (e.g. Windows). I hope to integrate a folder picture grabber feature that can label folders.
 
