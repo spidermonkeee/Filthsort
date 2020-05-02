@@ -5,6 +5,7 @@ import os, os.path, shutil, fnmatch, sys
 from colorama import init, Fore, Style
 from sys import exit
 import argparse
+from pathlib import Path
 init(autoreset=True) ## Autorest color back to default after each print used with colorama
 
 ## Preset Colors
@@ -35,6 +36,7 @@ fileExts = dict(archives=('.rar', '.zip', '.7z', '.iso', '.arc', '.tar.gz', '.ta
 
 
 def organize_files_by_extension(ext):
+    counter = 0
     for File in directory_files:
         # If the extension of the file matches some text followed by ext...
         if fnmatch.fnmatch(File,'*' + ext):
@@ -47,10 +49,20 @@ def organize_files_by_extension(ext):
                 except:
                     None
                 # Copy that file to the directory with that extension name
-                shutil.move(File,ext)
-                print ('\"' + File + '\" sorted to category:\t ' + ext)
+                try:
+                    shutil.move(File,ext)
+                    print ('\"' + File + '\" sorted to category:\t ' + ext)          
+                except shutil.Error as e:
+                    print('Error: Path exists renaming ' + File)
+                    counter = counter + 1
+                    p = Path(File)
+                    target = Path(p.parent, "{}_{}_{}".format(p.stem, counter, p.suffix))
+                    p.rename(target)
+                    print (target)
+                    shutil.move(str(target),ext)                
 
 def organize_files_by_keyword(key,val):
+    counter = 0
     for File in directory_files:
         # If the name of the file contains a keyword
         # Use REGEX here
@@ -63,12 +75,22 @@ def organize_files_by_keyword(key,val):
                         os.makedirs(val)
                 except:
                     None
-                # Copy that file to the directory with that keyword name
-                shutil.move(File,val)
-                print ('\"' + File + '\" sorted to :\t ' + val)
+                try:
+                    shutil.move(File,val)
+                    print ('\"' + File + '\" sorted to :\t ' + val)                
+                except shutil.Error as e:
+                    print('Error: Path exists renaming ' + File)
+                    counter = counter + 1
+                    p = Path(File)
+                    target = Path(p.parent, "{}_{}_{}".format(p.stem, counter, p.suffix))
+                    p.rename(target)
+                    print (target)
+                    shutil.move(str(target),val)
+
 
 
 def organize_files_by_keyword_and_ext(key,val,ext):
+    counter = 0
     for File in directory_files:
         # If the name of the file contains a keyword
         # Use REGEX here
@@ -82,11 +104,21 @@ def organize_files_by_keyword_and_ext(key,val,ext):
                 except:
                     None
                 # Copy that file to the directory with that keyword name
-                shutil.move(File,ext)
-                print ('\"' + File + '\" sorted to category:\t ' + ext)
+                try:
+                    shutil.move(File,ext)
+                    print ('\"' + File + '\" sorted to category:\t ' + ext)          
+                except shutil.Error as e:
+                    print('Error: Path exists renaming ' + File)
+                    counter = counter + 1
+                    p = Path(File)
+                    target = Path(p.parent, "{}_{}_{}".format(p.stem, counter, p.suffix))
+                    p.rename(target)
+                    print (target)
+                    shutil.move(str(target),ext)       
 
 
 def organize_files_by_keyword_and_type(key,val,ext):
+    counter = 0
     for File in directory_files:
         # If the name of the file contains a keyword
         # Use REGEX here
@@ -100,8 +132,17 @@ def organize_files_by_keyword_and_type(key,val,ext):
                 except:
                     None
                 # Copy that file to the directory with that keyword name
-                shutil.move(File,val)
-                print ('\"' + File + '\" sorted to :\t ' + val)                
+                try:
+                    shutil.move(File,val)
+                    print ('\"' + File + '\" sorted to :\t ' + val)                
+                except shutil.Error as e:
+                    print('Error: Path exists renaming ' + File)
+                    counter = counter + 1
+                    p = Path(File)
+                    target = Path(p.parent, "{}_{}_{}".format(p.stem, counter, p.suffix))
+                    p.rename(target)
+                    print (target)
+                    shutil.move(str(target),val)
 
 
 def open_wordlist(inputstr):
