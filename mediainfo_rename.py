@@ -10,7 +10,7 @@ root_directory = os.getcwd()
 directory_files = os.listdir(root_directory)
 fileExts = dict(videos=('.avi', '.mp4', '.mpeg', '.mpg', '.mkv', '.mov'))
 tags = ['RARBG - ','RARBG.COM - ', '.MP4-KTR', '.XXX']
-badmatches = [',','Downloaded from','Uploaded To','Encoded by','@','PornRips.to','pornolab.net','www.dvdvideosoft','GalaXXXy','excitemii','INOPORN.ME','_.  _ ','by EroticaShare','camwhores']
+badmatches = [',','https://xstarshub.','Downloaded from','Uploaded To','Encoded by','@','PornRips.to','pornolab.net','www.dvdvideosoft','GalaXXXy','excitemii','INOPORN.ME','_.  _ ','by EroticaShare','camwhores','COPYRIGHT','https://gzpbsk.com','xstarshub.com','EroTelki.ORG','NSFWzone.com','eRightSoft','Recorded and','<brandit49>']
 
 if len(sys.argv) <= 1:
     print("Dry run - please use -u to perform rename update")
@@ -21,7 +21,7 @@ for types in fileList:
     for ext in exts:
         for File in directory_files:
             # If the extension of the file matches some text followed by ext...
-            if fnmatch.fnmatch(File,'*' + ext):  
+            if fnmatch.fnmatch(File,'*' + ext):
                 # If the file is truly a file...
                 media_info = MediaInfo.parse(File)
                 for track in media_info.tracks:
@@ -53,7 +53,7 @@ for types in fileList:
                                     print("WARNING: "+ File + " exists in directory")
                                 else:
                                     print("           "+ File)
-                                    print("Renamed to ",renamed)
+                                    print("Renamed to",renamed)
                                     print("")
                                     os.rename(File, renamed)
                         else:       
