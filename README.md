@@ -42,9 +42,13 @@ archives=('.rar', '.zip', '.7z', '.iso', '.arc', '.tar.gz', '.tar.xz', '.tgz', '
 
 
 ### Requirements
-- Python 3 installed (should work on any 3.X version; 2.7 not tested)
+- Python 3 installed (should work on any 3.7+ version; 2.7 not tested)
+ 
+- Additional package required for using the GUI version, 'filthsortgooey.py' `pip install Gooey`
 #### Running
 
-``` python filthsort -i sortlist.list -e -t Videos ```
+``` python filthsort.py -i sortlist.csv -e -t Videos ```
 
-- I usually copy over the script and run it directly from the folder to be sorted via command line.
+- I copy over the script and run it directly from the folder to be sorted via command line (with any sortlists). This should be changed in the future
+ 
+ Optionally, there is a GUI version. Very barebones, and requires being in the working directory.
